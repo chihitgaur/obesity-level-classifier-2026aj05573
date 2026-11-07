@@ -17,7 +17,10 @@ Accuracy, AUC, Precision, Recall, F1 and MCC. The models are served through a St
 - Preprocessing: StandardScaler on numeric columns, One-Hot encoding on categorical columns (inside a sklearn Pipeline, saved with each model).
 - Split: 80/20 stratified (random_state=2026) -> 1,688 train / 423 test rows. The test rows are in `test_data.csv`.
 
-## c. Stream lab Live app: <!-- [(https://obesity-level-classifier-2026aj05573-gfcnekc2w5gll2yrkr63wn.streamlit.app/)]
+## c. GitHub repository
+https://github.com/chihitgaur/obesity-level-classifier-2026aj05573
+
+Live Streamlit app: https://obesity-level-classifier-2026aj05573-gfcnekc2w5gll2yrkr63wn.streamlit.app/
 
 ## d. Models used
 
@@ -48,17 +51,17 @@ Precision, Recall and F1 are weighted averages; AUC is one-vs-rest, weighted.
 ## How to run locally
 ```
 pip install -r requirements.txt
-python train_models.py      
+python train_models.py      # retrains and saves models into model/
 streamlit run app.py
 ```
 
 ## Repository structure
 ```
 app.py              Streamlit app
-train_models.py     preprocessing, training, evaluation
+train_models.py     
 requirements.txt
-test_data.csv       held-out test data to upload in the app
-model/              5 saved pipelines (.joblib)
-results/metrics.csv metrics from training
-data_raw/           original UCI csv
+test_data.csv      
+model/              
+results/metrics.csv 
+data_raw/           
 ```
