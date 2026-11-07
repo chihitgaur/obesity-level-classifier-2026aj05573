@@ -52,17 +52,17 @@ Precision, Recall and F1 are weighted averages; AUC is one-vs-rest, weighted.
 ## How to run locally
 ```
 pip install -r requirements.txt
-python train_models.py      # retrains and saves models into model/
+python train_models.py   
 streamlit run app.py
 ```
 
 ## Repository structure
 ```
 app.py              Streamlit app
-train_models.py     preprocessing, training, evaluation
+train_models.py     
 requirements.txt
-test_data.csv       held-out test data to upload in the app
-model/              5 saved pipelines (.joblib)
-results/metrics.csv metrics from training
-data_raw/           original UCI csv
+test_data.csv      
+model/              
+results/metrics.csv 
+data_raw/           
 ```
