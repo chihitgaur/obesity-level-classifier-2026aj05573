@@ -1,7 +1,6 @@
 # Obesity Level Classification - ML Assignment 2 (M.Tech AIML, BITS WILP)
 
 ## a. Problem statement
-<!-- TODO: rewrite in your own words -->
 Predict a person's obesity level (7 categories) from eating habits, physical condition and
 basic body measurements, using five classification algorithms, and compare them with
 Accuracy, AUC, Precision, Recall, F1 and MCC. The models are served through a Streamlit app.
@@ -37,16 +36,14 @@ Live Streamlit app: https://obesity-level-classifier-2026aj05573-gfcnekc2w5gll2y
 Precision, Recall and F1 are weighted averages; AUC is one-vs-rest, weighted.
 
 ### Observations
-<!-- TODO: write these in your own words. Hints are in brackets. -->
-
 | ML Model Name | Observation about model performance |
 |---|---|
-| Logistic Regression | [good AUC, linear boundary works since classes follow BMI bands; weaker on neighbouring classes] |
-| Decision Tree | [second best accuracy, splits on Weight/Height naturally; AUC lower because leaf probabilities are coarse] |
-| KNN | [depends on scaling and one-hot columns diluting distance; lower than SVM] |
-| Naive Bayes | [weakest; independence assumption breaks because Height and Weight are strongly related, and one-hot columns are not Gaussian] |
-| Support Vector Machine | [best on every metric; RBF kernel captures the non-linear BMI-style boundary] |
-| **Overall winner** | **Support Vector Machine** [explain why] |
+| Logistic Regression | Accuracy of 0.879 with the second highest AUC (0.988), so it ranks the classes very well even though its hard predictions are not perfect. A linear boundary gets most rows right, but it mixes up neighbouring classes (for example Overweight Level I vs II) because the obesity categories follow BMI, which is not linear in Height and Weight. |
+| Decision Tree | Second best model in accuracy (0.927) and MCC (0.914). It can split directly on Weight and Height, which fits how the labels were created. Its AUC (0.957) is lower than Logistic Regression because leaf nodes give coarse probabilities, and a depth-limited tree can still overfit the synthetic rows. |
+| KNN | Accuracy of 0.823 with k=7. It depends on distance, so it needs scaling, and the many one-hot columns add extra distance that is not related to the obesity level. Its F1 (0.809) is lower than its accuracy, which means some classes are predicted worse than others. |
+| Naive Bayes | Weakest model by a big margin (accuracy 0.563, MCC 0.510). It assumes the features are independent and Gaussian, but Height and Weight are strongly linked and the one-hot columns are not Gaussian, so the assumption does not hold on this dataset. |
+| Support Vector Machine | Best on all six metrics (accuracy 0.957, AUC 0.997, MCC 0.950). The RBF kernel can draw the curved boundaries between the BMI-like classes, and scaling of the inputs helps it. |
+| **Overall winner** | **Support Vector Machine.** It has the highest score on every metric, and its near-perfect AUC and MCC show it is good across all seven classes and not just the common ones. Decision Tree is a close second and is easier to interpret. |
 
 ## How to run locally
 ```
